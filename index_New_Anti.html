@@ -1,0 +1,2720 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dr. Ouseph C.J. | Theoretical Physicist</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+
+  <!-- Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <!-- GSAP for advanced animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- AOS Scroll Animations -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+
+  <!-- Lightbox -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet">
+
+  <style>
+    /* ============================================================
+       CSS VARIABLES & RESET
+    ============================================================ */
+    :root {
+      --gold: #c8963c;
+      --gold-light: #e8b86d;
+      --gold-dark: #9b6f25;
+      --navy: #0d1b2a;
+      --navy-mid: #1a2f44;
+      --navy-light: #243b55;
+      --cream: #faf8f4;
+      --warm-gray: #f2ede6;
+      --text-main: #1e1e1e;
+      --text-soft: #5a5a5a;
+      --text-muted: #8a8a8a;
+      --radius-card: 16px;
+      --shadow-card: 0 8px 40px rgba(0, 0, 0, 0.10);
+      --shadow-hover: 0 20px 60px rgba(0, 0, 0, 0.18);
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text-main);
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+
+    /* ============================================================
+       TYPOGRAPHY
+    ============================================================ */
+    .display-font {
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: 'Cormorant Garamond', serif;
+      line-height: 1.2;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-heading {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      color: var(--navy);
+      position: relative;
+      display: inline-block;
+      padding-bottom: 1rem;
+    }
+
+    .section-heading::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 56px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      border-radius: 2px;
+    }
+
+    .centered-heading {
+      display: block;
+      text-align: center;
+    }
+
+    .centered-heading::after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* ============================================================
+       HERO SECTION
+    ============================================================ */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(135deg, rgba(13, 27, 42, 0.90) 0%, rgba(36, 59, 85, 0.80) 60%, rgba(13, 27, 42, 0.95) 100%),
+        url('Profile.JPEG');
+      background-size: cover;
+      background-position: center 30%;
+      z-index: 0;
+    }
+
+    /* Animated star-field particles */
+    .hero-particles {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .hero-particles span {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: rgba(200, 150, 60, 0.6);
+      border-radius: 50%;
+      animation: twinkle var(--dur, 4s) ease-in-out infinite;
+      animation-delay: var(--delay, 0s);
+    }
+
+    @keyframes twinkle {
+
+      0%,
+      100% {
+        opacity: 0.2;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.8);
+      }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      text-align: center;
+      color: #fff;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.75rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      animation: fadeDown 0.8s ease both;
+    }
+
+    .hero-name {
+      font-size: clamp(3.5rem, 9vw, 7rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin-bottom: 1rem;
+      animation: fadeUp 0.9s 0.2s ease both;
+    }
+
+    .hero-title {
+      font-size: clamp(1.2rem, 2.5vw, 1.75rem);
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 1.5rem;
+      font-family: 'DM Sans', sans-serif;
+      animation: fadeUp 0.9s 0.35s ease both;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-bottom: 3rem;
+      animation: fadeUp 0.9s 0.5s ease both;
+    }
+
+    .hero-tag {
+      background: rgba(200, 150, 60, 0.18);
+      border: 1px solid rgba(200, 150, 60, 0.4);
+      color: var(--gold-light);
+      padding: 0.35rem 1rem;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      animation: fadeUp 0.9s 0.65s ease both;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: #fff;
+      padding: 0.9rem 2.2rem;
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      font-family: 'DM Sans', sans-serif;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: var(--transition);
+      box-shadow: 0 4px 20px rgba(200, 150, 60, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(200, 150, 60, 0.5);
+      filter: brightness(1.08);
+    }
+
+    .btn-outline {
+      border: 2px solid rgba(255, 255, 255, 0.6);
+      color: #fff;
+      padding: 0.9rem 2.2rem;
+      border-radius: 100px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      font-family: 'DM Sans', sans-serif;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: var(--transition);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: #fff;
+      transform: translateY(-3px);
+    }
+
+    .hero-scroll-indicator {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      animation: fadeIn 1.5s 1.2s ease both;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), transparent);
+      animation: scrollPulse 2s ease infinite;
+    }
+
+    @keyframes scrollPulse {
+
+      0%,
+      100% {
+        transform: scaleY(1);
+        opacity: 1;
+      }
+
+      50% {
+        transform: scaleY(0.6);
+        opacity: 0.4;
+      }
+    }
+
+    /* ============================================================
+       NAVIGATION
+    ============================================================ */
+    #navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 252, 248, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(200, 150, 60, 0.15);
+      transition: box-shadow 0.3s;
+    }
+
+    #navbar.scrolled {
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--navy);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    .nav-brand:hover {
+      color: var(--gold-dark);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      display: block;
+      padding: 0.4rem 0.75rem;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: var(--text-soft);
+      text-decoration: none;
+      border-radius: 6px;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 2px;
+      transition: width var(--transition);
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--gold-dark);
+      background: rgba(200, 150, 60, 0.07);
+    }
+
+    .nav-links a.active::after {
+      width: 60%;
+    }
+
+    /* Mobile nav toggle */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      color: var(--navy);
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    /* ============================================================
+       SECTION BASE
+    ============================================================ */
+    section {
+      padding: 6rem 0;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .section-header {
+      margin-bottom: 4rem;
+    }
+
+    /* Alternating section backgrounds */
+    .bg-cream {
+      background: var(--cream);
+    }
+
+    .bg-warm {
+      background: var(--warm-gray);
+    }
+
+    .bg-navy {
+      background: var(--navy);
+      color: #fff;
+    }
+
+    .bg-navy .section-heading {
+      color: #fff;
+    }
+
+    .bg-navy .section-label {
+      color: var(--gold-light);
+    }
+
+    /* ============================================================
+       EDUCATION CARDS
+    ============================================================ */
+    .edu-card {
+      background: #fff;
+      border-radius: var(--radius-card);
+      padding: 2rem 2.5rem;
+      border: 1px solid rgba(200, 150, 60, 0.12);
+      box-shadow: var(--shadow-card);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0 2.5rem;
+      align-items: start;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .edu-card::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: linear-gradient(to bottom, var(--gold), var(--gold-light));
+      border-radius: 4px 0 0 4px;
+    }
+
+    .edu-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .edu-year {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--gold-dark);
+      white-space: nowrap;
+      padding-top: 0.2rem;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .edu-degree {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.3rem;
+    }
+
+    .edu-institution {
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 0.15rem;
+    }
+
+    .edu-detail {
+      font-size: 0.88rem;
+      color: var(--text-soft);
+    }
+
+    .edu-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.8rem;
+      color: var(--gold-dark);
+      text-decoration: none;
+      margin-top: 0.5rem;
+      transition: gap var(--transition), color var(--transition);
+    }
+
+    .edu-link:hover {
+      gap: 0.6rem;
+      color: var(--gold);
+    }
+
+    /* ============================================================
+       EXPERIENCE TIMELINE
+    ============================================================ */
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.5rem;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 3rem;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2.45rem;
+      top: 0.55rem;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--gold);
+      border: 3px solid var(--cream);
+      box-shadow: 0 0 0 2px var(--gold-light);
+    }
+
+    .timeline-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.2rem;
+    }
+
+    .timeline-meta {
+      font-size: 0.82rem;
+      color: var(--gold-dark);
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+    }
+
+    .timeline-list {
+      list-style: none;
+    }
+
+    .timeline-list li {
+      font-size: 0.9rem;
+      color: var(--text-soft);
+      padding-left: 1.2rem;
+      position: relative;
+      margin-bottom: 0.4rem;
+    }
+
+    .timeline-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-size: 0.75rem;
+      top: 0.1rem;
+    }
+
+    /* ============================================================
+       VISITS GRID
+    ============================================================ */
+    .visit-card {
+      background: #fff;
+      border-radius: var(--radius-card);
+      padding: 1.5rem 1.75rem;
+      border-left: 4px solid var(--gold);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      transition: var(--transition);
+    }
+
+    .visit-card:hover {
+      transform: translateX(6px);
+      box-shadow: var(--shadow-card);
+    }
+
+    .visit-name {
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.25rem;
+    }
+
+    .visit-meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .visit-place {
+      font-size: 0.85rem;
+      color: var(--text-soft);
+      margin-top: 0.3rem;
+    }
+
+    /* ============================================================
+       COLLABORATION MAP
+    ============================================================ */
+    .collab-map-wrap {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.18);
+    }
+
+    .collab-map-wrap img {
+      width: 100%;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .collab-map-wrap:hover img {
+      transform: scale(1.015);
+    }
+
+    .collab-legend {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.2rem;
+      margin-top: 2rem;
+    }
+
+    .collab-dot {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-soft);
+    }
+
+    .collab-dot-marker {
+      width: 10px;
+      height: 10px;
+      background: var(--gold);
+      border-radius: 50%;
+      box-shadow: 0 0 0 3px rgba(200, 150, 60, 0.25);
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        box-shadow: 0 0 0 3px rgba(200, 150, 60, 0.25);
+      }
+
+      50% {
+        box-shadow: 0 0 0 8px rgba(200, 150, 60, 0.08);
+      }
+    }
+
+    /* ============================================================
+       RESEARCH INTERESTS TABS
+    ============================================================ */
+    .tab-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 3rem;
+      border-bottom: 2px solid rgba(200, 150, 60, 0.15);
+      padding-bottom: 0;
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      padding: 0.75rem 1.4rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-soft);
+      cursor: pointer;
+      border-radius: 8px 8px 0 0;
+      transition: var(--transition);
+      position: relative;
+      bottom: -2px;
+      border-bottom: 2px solid transparent;
+    }
+
+    .tab-btn:hover {
+      color: var(--gold-dark);
+      background: rgba(200, 150, 60, 0.06);
+    }
+
+    .tab-btn.active {
+      color: var(--gold-dark);
+      border-bottom-color: var(--gold);
+      background: rgba(200, 150, 60, 0.07);
+    }
+
+    .tab-btn i {
+      margin-right: 0.4rem;
+    }
+
+    .tab-panel {
+      display: none;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    .research-panel-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    @media (max-width: 768px) {
+      .research-panel-inner {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .research-img-wrap {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      transition: var(--transition);
+    }
+
+    .research-img-wrap:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .research-img-wrap img {
+      width: 100%;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .research-img-wrap:hover img {
+      transform: scale(1.04);
+    }
+
+    .pub-list {
+      list-style: none;
+      margin-top: 1.5rem;
+    }
+
+    .pub-item {
+      background: rgba(200, 150, 60, 0.05);
+      border-left: 3px solid var(--gold-light);
+      padding: 0.75rem 1rem;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 0.6rem;
+      font-size: 0.875rem;
+      color: var(--text-soft);
+      transition: var(--transition);
+    }
+
+    .pub-item:hover {
+      background: rgba(200, 150, 60, 0.1);
+      border-left-color: var(--gold-dark);
+      transform: translateX(3px);
+    }
+
+    .pub-item a {
+      color: var(--gold-dark);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .pub-item a:hover {
+      text-decoration: underline;
+    }
+
+    /* ============================================================
+       TEACHING SECTION
+    ============================================================ */
+    .teaching-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    @media (max-width: 768px) {
+      .teaching-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .teaching-img {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow-hover);
+      position: relative;
+    }
+
+    .teaching-img img {
+      width: 100%;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .teaching-img:hover img {
+      transform: scale(1.04);
+    }
+
+    /* ============================================================
+       TALKS GALLERY
+    ============================================================ */
+    .talks-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 3rem;
+    }
+
+    @media (max-width: 768px) {
+      .talks-gallery {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .gallery-item {
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      transition: var(--transition);
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.03);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .talk-items {
+      list-style: none;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .talk-item {
+      padding: 1rem 1.25rem;
+      border-radius: 10px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1rem;
+      align-items: start;
+      transition: background var(--transition);
+      margin-bottom: 0.25rem;
+    }
+
+    .talk-item:hover {
+      background: rgba(200, 150, 60, 0.06);
+    }
+
+    .talk-date {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--gold-dark);
+      white-space: nowrap;
+      padding-top: 0.15rem;
+    }
+
+    .talk-text {
+      font-size: 0.9rem;
+      color: var(--text-soft);
+    }
+
+    /* ============================================================
+       MENTORSHIP CARDS
+    ============================================================ */
+    .mentorship-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .mentor-card {
+      background: #fff;
+      border-radius: var(--radius-card);
+      padding: 2rem;
+      box-shadow: var(--shadow-card);
+      border-top: 4px solid var(--gold);
+      transition: var(--transition);
+    }
+
+    .mentor-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .mentor-card i {
+      font-size: 1.8rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .mentor-card p {
+      font-size: 0.9rem;
+      color: var(--text-soft);
+    }
+
+    /* ============================================================
+       SKILLS SECTION
+    ============================================================ */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .skill-card {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-card);
+      padding: 1.75rem;
+      transition: var(--transition);
+    }
+
+    .skill-card:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(200, 150, 60, 0.4);
+      transform: translateY(-3px);
+    }
+
+    .skill-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(200, 150, 60, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      color: var(--gold-light);
+      margin-bottom: 1rem;
+    }
+
+    .skill-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .skill-text {
+      font-size: 0.83rem;
+      color: rgba(255, 255, 255, 0.55);
+      line-height: 1.65;
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer {
+      background: var(--navy);
+      padding: 5rem 0 3rem;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      text-align: center;
+    }
+
+    .footer-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-tagline {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.45);
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.5rem 1.25rem;
+      border-radius: 100px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: rgba(255, 255, 255, 0.65);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .footer-link:hover {
+      border-color: var(--gold);
+      color: var(--gold-light);
+      background: rgba(200, 150, 60, 0.1);
+    }
+
+    .footer-copy {
+      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.25);
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+      padding-top: 2rem;
+    }
+
+    /* ============================================================
+       KEYFRAME ANIMATIONS
+    ============================================================ */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeDown {
+      from {
+        opacity: 0;
+        transform: translateY(-16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ============================================================
+       UTILITY
+    ============================================================ */
+    .gold {
+      color: var(--gold);
+    }
+
+    .text-soft {
+      color: var(--text-soft);
+    }
+
+    .mb-1 {
+      margin-bottom: 0.5rem;
+    }
+
+    .mb-2 {
+      margin-bottom: 1rem;
+    }
+
+    .mb-3 {
+      margin-bottom: 1.5rem;
+    }
+
+    .mt-2 {
+      margin-top: 1rem;
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: rgba(255, 252, 248, 0.98);
+        padding: 1rem 2rem 2rem;
+        gap: 0.25rem;
+        border-bottom: 1px solid rgba(200, 150, 60, 0.15);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 0.6rem 0.75rem;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+    }
+
+    @media (max-width: 600px) {
+      section {
+        padding: 4rem 0;
+      }
+
+      .edu-card {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+      }
+
+      .hero-name {
+        font-size: 3rem;
+      }
+
+      .talks-gallery {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    /* Lightbox overrides */
+    .lb-nav a.lb-prev,
+    .lb-nav a.lb-next {
+      opacity: 0.6;
+    }
+
+    /* AOS enhancement */
+    [data-aos] {
+      will-change: transform, opacity;
+    }
+
+    /* Divider */
+    .divider {
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, rgba(200, 150, 60, 0.3), transparent);
+      align-self: stretch;
+    }
+
+    /* Inline icon row */
+    .icon-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .icon-row i {
+      font-size: 1.6rem;
+      color: var(--gold);
+    }
+
+    .icon-row h3 {
+      font-size: 1.8rem;
+      color: var(--navy);
+    }
+
+    /* ============================================================
+       PROJECTS SECTION
+    ============================================================ */
+    .project-card {
+      background: #fff;
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      border: 1px solid rgba(200, 150, 60, 0.10);
+      transition: var(--transition);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media (max-width: 820px) {
+      .project-card {
+        grid-template-columns: 1fr;
+      }
+
+      .project-card.reverse {
+        direction: ltr;
+      }
+    }
+
+    .project-card.reverse {
+      direction: rtl;
+    }
+
+    .project-card.reverse>* {
+      direction: ltr;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .project-img-panel {
+      position: relative;
+      overflow: hidden;
+      min-height: 320px;
+    }
+
+    .project-img-panel img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.55s ease;
+    }
+
+    .project-card:hover .project-img-panel img {
+      transform: scale(1.06);
+    }
+
+    .project-img-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(13, 27, 42, 0.45) 0%, rgba(200, 150, 60, 0.15) 100%);
+      pointer-events: none;
+    }
+
+    .project-content-panel {
+      padding: 2.5rem 2.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .project-category-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(200, 150, 60, 0.1);
+      border: 1px solid rgba(200, 150, 60, 0.3);
+      color: var(--gold-dark);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.85rem;
+      border-radius: 100px;
+      width: fit-content;
+    }
+
+    .project-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.25;
+    }
+
+    .project-desc {
+      font-size: 0.92rem;
+      color: var(--text-soft);
+      line-height: 1.8;
+    }
+
+    .project-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      margin-top: 0.25rem;
+    }
+
+    .project-bullets li {
+      font-size: 0.875rem;
+      color: var(--text-soft);
+      padding-left: 1.4rem;
+      position: relative;
+      line-height: 1.65;
+    }
+
+    .project-bullets li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.6em;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
+    .project-sub-heading {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-top: 0.75rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .project-tech-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.25rem;
+    }
+
+    .tech-chip {
+      background: rgba(13, 27, 42, 0.06);
+      border: 1px solid rgba(13, 27, 42, 0.1);
+      color: var(--navy);
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 0.2rem 0.65rem;
+      border-radius: 6px;
+    }
+  </style>
+
+  <!-- ============================================================
+       ENHANCEMENT CSS — Visual, Interactive & Scroll Effects
+  ============================================================ -->
+  <style>
+    /* ── Scroll Progress Bar ───────────────────────────────────── */
+    #scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light));
+      z-index: 9999;
+      transition: width 0.1s linear;
+      box-shadow: 0 0 8px rgba(200, 150, 60, 0.6);
+    }
+
+    /* ── Animated Section Dividers ─────────────────────────────── */
+    .section-divider {
+      width: 100%;
+      height: 2px;
+      position: relative;
+      overflow: hidden;
+      margin: 0;
+    }
+
+    .section-divider::after {
+      content: '';
+      position: absolute;
+      left: -100%;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, var(--gold), var(--gold-light), transparent);
+      transition: left 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .section-divider.in-view::after {
+      left: 0;
+    }
+
+    /* ── Glassmorphism Cards ────────────────────────────────────── */
+    .edu-card,
+    .visit-card,
+    .mentor-card {
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+
+    .skill-card {
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    /* ── Card 3-D Tilt (via JS) ─────────────────────────────────── */
+    .tilt-card {
+      transform-style: preserve-3d;
+      will-change: transform;
+      transition: transform 0.15s ease, box-shadow 0.3s ease;
+    }
+
+    .tilt-card:hover {
+      box-shadow: var(--shadow-hover);
+    }
+
+    /* ── Ripple Effect on Buttons ───────────────────────────────── */
+    .btn-primary,
+    .btn-outline {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ripple {
+      position: absolute;
+      border-radius: 50%;
+      width: 10px;
+      height: 10px;
+      background: rgba(255, 255, 255, 0.45);
+      transform: scale(0);
+      animation: ripple-anim 0.6s linear;
+      pointer-events: none;
+    }
+
+    @keyframes ripple-anim {
+      to {
+        transform: scale(28);
+        opacity: 0;
+      }
+    }
+
+    /* ── Animated Underline on Links ────────────────────────────── */
+    .edu-link,
+    .pub-item a,
+    .footer-link {
+      position: relative;
+      text-decoration: none !important;
+    }
+
+    .edu-link::after,
+    .pub-item a::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 0;
+      height: 1.5px;
+      background: var(--gold);
+      transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .edu-link:hover::after,
+    .pub-item a:hover::after {
+      width: 100%;
+    }
+
+    /* ── Parallax Hero BG ───────────────────────────────────────── */
+    .hero-bg {
+      will-change: transform;
+    }
+
+    /* ── Grayscale → Colour on Images ──────────────────────────── */
+    .gallery-item img,
+    .research-img-wrap img,
+    .teaching-img img {
+      filter: grayscale(30%);
+      transition: filter 0.5s ease, transform 0.5s ease;
+    }
+
+    .gallery-item:hover img,
+    .research-img-wrap:hover img,
+    .teaching-img:hover img {
+      filter: grayscale(0%);
+    }
+
+    /* ── Floating Decorative Orbs ───────────────────────────────── */
+    .float-orb {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      opacity: 0.07;
+      animation: float-anim var(--orb-dur, 8s) ease-in-out infinite alternate;
+    }
+
+    @keyframes float-anim {
+      from {
+        transform: translateY(0) scale(1);
+      }
+
+      to {
+        transform: translateY(-24px) scale(1.06);
+      }
+    }
+
+    /* ── Slide-In Sections ─────────────────────────────────────── */
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-48px);
+      transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(48px);
+      transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .reveal-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .revealed {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+
+    /* ── Staggered pub / talk items ─────────────────────────────── */
+    .pub-item,
+    .talk-item,
+    .visit-card,
+    .mentor-card,
+    .skill-card {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease, background var(--transition), box-shadow var(--transition);
+    }
+
+    .stagger-revealed {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+
+    /* ── Scroll-intensified shadows on cards ────────────────────── */
+    .edu-card.in-shadow {
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.14);
+    }
+
+    /* ── Nav hide/reveal on scroll ──────────────────────────────── */
+    #navbar {
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease, background 0.3s ease;
+    }
+
+    #navbar.nav-hidden {
+      transform: translateY(-100%);
+    }
+
+    /* ── Section heading underline animation ────────────────────── */
+    .section-heading::after {
+      width: 0;
+      transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+    }
+
+    .heading-revealed .section-heading::after {
+      width: 56px;
+    }
+
+    .heading-revealed .centered-heading::after {
+      width: 56px;
+    }
+
+    /* ── Collaboration dot extra glow ───────────────────────────── */
+    .collab-dot-marker {
+      animation: pulseGlow 2.5s ease-in-out infinite;
+    }
+
+    @keyframes pulseGlow {
+
+      0%,
+      100% {
+        box-shadow: 0 0 0 3px rgba(200, 150, 60, 0.3);
+      }
+
+      50% {
+        box-shadow: 0 0 0 9px rgba(200, 150, 60, 0.07), 0 0 14px rgba(200, 150, 60, 0.35);
+      }
+    }
+
+    /* ── Timeline dot pulse ─────────────────────────────────────── */
+    .timeline-item::before {
+      animation: tlPulse 3s ease-in-out infinite;
+    }
+
+    @keyframes tlPulse {
+
+      0%,
+      100% {
+        box-shadow: 0 0 0 2px var(--gold-light);
+      }
+
+      50% {
+        box-shadow: 0 0 0 6px rgba(200, 150, 60, 0.15);
+      }
+    }
+
+    /* ── Hero gradient shift on scroll ─────────────────────────── */
+    .hero-bg {
+      transition: filter 0.4s ease;
+    }
+
+    /* ── Gradient text on section labels ───────────────────────── */
+    .section-label {
+      background: linear-gradient(90deg, var(--gold-dark), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .bg-navy .section-label {
+      background: linear-gradient(90deg, var(--gold-light), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ── Project card scroll shadow intensification ─────────────── */
+    .project-card {
+      transition: transform var(--transition), box-shadow 0.5s ease;
+    }
+  </style>
+
+<body>
+
+  <!-- Scroll Progress Indicator -->
+  <div id="scroll-progress"></div>
+
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <header id="hero">
+    <div class="hero-bg"></div>
+
+    <!-- Twinkling particles -->
+    <div class="hero-particles" id="heroParticles"></div>
+
+    <div class="hero-content">
+      <span class="hero-eyebrow"><i class="fas fa-atom" style="margin-right:0.5rem;"></i>Theoretical Physics · High
+        Energy · Cosmology</span>
+      <h1 class="hero-name display-font">Dr. Ouseph C.J.</h1>
+      <p class="hero-title">Theoretical Physicist</p>
+
+      <div class="hero-tags">
+        <span class="hero-tag">Advanced Data Analytics</span>
+        <span class="hero-tag">Mathematical Modeling</span>
+        <span class="hero-tag">Statistical Modeling</span>
+        <span class="hero-tag">Quantitative Research</span>
+        <span class="hero-tag">Collider Physics</span>
+        <span class="hero-tag">New Physics Searches</span>
+        <span class="hero-tag">Early Universe Cosmology</span>
+        <span class="hero-tag">Inflation</span>
+        <span class="hero-tag">Primordial Black Holes</span>
+        <span class="hero-tag">Gravitational Waves</span>
+      </div>
+
+      <div class="hero-ctas">
+        <a href="Ouseph_CV_Acad.pdf" target="_blank" class="btn-primary">
+          <i class="fas fa-download"></i> Download CV
+        </a>
+        <a href="https://inspirehep.net/authors/1842258?ui-citation-summary=true" target="_blank" class="btn-outline">
+          <i class="fas fa-book-open"></i> Publications List
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-scroll-indicator">
+      <div class="scroll-line"></div>
+      <span>scroll</span>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       NAVIGATION
+  ============================================================ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-brand">Dr. Ouseph C.J.</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <i class="fas fa-bars"></i>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#education">Education</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#visits">Visits</a></li>
+        <li><a href="#collaborations">Collaborations</a></li>
+        <li><a href="#interests">Research</a></li>
+        <li><a href="#teaching">Teaching</a></li>
+        <li><a href="#talks">Talks</a></li>
+        <li><a href="#mentorship">Mentorship</a></li>
+        <li><a href="#skills">Skills</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       EDUCATION
+  ============================================================ -->
+  <section id="education" class="bg-cream">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-label"><i class="fas fa-graduation-cap"></i>&nbsp; Academic Background</span>
+        <h2 class="section-heading">Education</h2>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:1.5rem;">
+
+        <div class="edu-card" data-aos="fade-up" data-aos-delay="50">
+          <div class="edu-year">09/2019<br>07/2024</div>
+          <div>
+            <div class="edu-degree">Ph.D. in Physics</div>
+            <div class="edu-institution">National Tsing Hua University</div>
+            <div class="edu-detail" style="margin-bottom:0.2rem;">Hsinchu, Taiwan</div>
+            <div class="edu-detail">Advisor: <strong>Prof. Kingman Cheung</strong></div>
+            <div class="edu-detail">Thesis: New Physics Search at Forward Physics Facility of LHC</div>
+            <a href="https://astr.site.nthu.edu.tw/p/406-1336-48634,r2568.php?Lang=en" target="_blank" class="edu-link">
+              Supervisor webpage <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="edu-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="edu-year">07/2016<br>07/2018</div>
+          <div>
+            <div class="edu-degree">M.Sc. in Physics</div>
+            <div class="edu-institution">Indian Institute of Technology Indore</div>
+            <div class="edu-detail" style="margin-bottom:0.2rem;">Indore, India</div>
+            <div class="edu-detail">Advisor: <strong>Prof. Subhendu Rakshit</strong></div>
+            <div class="edu-detail">Thesis: Higgs Inflation</div>
+            <a href="https://sites.google.com/iiti.ac.in/srakshit" target="_blank" class="edu-link">
+              Advisor webpage <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="edu-card" data-aos="fade-up" data-aos-delay="150">
+          <div class="edu-year">07/2012<br>07/2015</div>
+          <div>
+            <div class="edu-degree">B.Sc. in Physics</div>
+            <div class="edu-institution">University of Kerala</div>
+            <div class="edu-detail" style="margin-bottom:0.2rem;">Thiruvananthapuram, India</div>
+            <div class="edu-detail">Advisor: <strong>Prof. Saneesh Sebastian</strong></div>
+            <div class="edu-detail">Thesis: General Relativity, Black Holes, and Kruskal Diagram</div>
+            <a href="https://inspirehep.net/authors/2302138?ui-citation-summary=true" target="_blank" class="edu-link">
+              Advisor webpage <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       RESEARCH EXPERIENCE
+  ============================================================ -->
+  <section id="experience" class="bg-warm">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-label"><i class="fas fa-flask"></i>&nbsp; Career</span>
+        <h2 class="section-heading">Professional Research Experience</h2>
+      </div>
+
+      <div class="timeline" data-aos="fade-up" data-aos-delay="80">
+
+        <div class="timeline-item">
+          <div class="timeline-title">Senior Research Scientist</div>
+          <div class="timeline-meta">Seoul National University of Science and Technology · Seoul, Korea · 09/2024 –
+            08/2025</div>
+          <ul class="timeline-list">
+            <li>Advanced mathematical modeling and Python-based data analytics for complex physical systems</li>
+            <li>Large-scale data processing (&gt;10TB), statistical inference, and visualization</li>
+            <li>Project leadership and international collaboration</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-title">Senior Visiting Research Scientist</div>
+          <div class="timeline-meta">University of Adelaide · Australia · 03/2025 – 05/2025</div>
+          <ul class="timeline-list">
+            <li>Computational statistics, data modeling with Python and Mathematica</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-title">Doctoral Researcher</div>
+          <div class="timeline-meta">National Tsing Hua University · Taiwan · 09/2019 – 07/2024</div>
+          <ul class="timeline-list">
+            <li>Developed models and simulations for new physics at LHC/FPF and early-universe cosmology</li>
+            <li>Published 15+ papers in Q1 journals; extensive use of MadGraph, Pythia, ROOT, and Python</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PROJECTS
+  ============================================================ -->
+  <section id="projects" class="bg-cream">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-label"><i class="fas fa-diagram-project"></i>&nbsp; Applied Work</span>
+        <h2 class="section-heading">Projects</h2>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:2.5rem;">
+
+        <!-- Project 1: Data-Driven Modeling -->
+        <div class="project-card" data-aos="fade-up" data-aos-delay="60">
+          <div class="project-img-panel">
+            <a href="Project1.png" data-lightbox="projects" data-title="Data-Driven Modeling Projects">
+              <img src="Project1.png" alt="Data-Driven Modeling Projects">
+              <div class="project-img-overlay"></div>
+            </a>
+          </div>
+          <div class="project-content-panel">
+            <span class="project-category-badge"><i class="fas fa-chart-scatter"></i> Category 1</span>
+            <h3 class="project-title display-font">Data-Driven Modeling Projects</h3>
+            <p class="project-desc">
+              Application of advanced statistical and machine-learning techniques to extract meaningful physical signals
+              from large, complex datasets — bridging theoretical predictions with real observational data.
+            </p>
+
+            <div>
+              <div class="project-sub-heading">Key Contributions</div>
+              <ul class="project-bullets">
+                <li>Developed Python-based data pipelines for processing and analyzing multi-terabyte physics datasets,
+                  applying NumPy, SciPy, and Pandas for high-throughput numerical workflows</li>
+                <li>Constructed Bayesian inference frameworks and likelihood-based statistical models to constrain
+                  new-physics parameter spaces using collider and cosmological observational data</li>
+                <li>Applied Monte Carlo sampling methods (MCMC) for posterior estimation and uncertainty quantification
+                  in beyond-Standard-Model scenarios</li>
+                <li>Built automated analysis workflows integrating MadGraph event generation, Pythia showering, and
+                  Delphes detector simulation with ROOT-based statistical analysis</li>
+                <li>Produced publication-quality visualizations of multi-dimensional parameter scans, exclusion
+                  contours, and signal-to-background discriminators using Matplotlib and Seaborn</li>
+              </ul>
+            </div>
+
+            <div>
+              <div class="project-sub-heading">Tools &amp; Methods</div>
+              <div class="project-tech-row">
+                <span class="tech-chip">Python</span>
+                <span class="tech-chip">Bayesian Inference</span>
+                <span class="tech-chip">MCMC</span>
+                <span class="tech-chip">Monte Carlo</span>
+                <span class="tech-chip">ROOT</span>
+                <span class="tech-chip">Mathematica</span>
+                <span class="tech-chip">Matplotlib</span>
+                <span class="tech-chip">SciPy</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: Quantitative System Simulations -->
+        <div class="project-card reverse" data-aos="fade-up" data-aos-delay="80">
+          <div class="project-img-panel">
+            <a href="Project2.png" data-lightbox="projects" data-title="Quantitative System Simulations">
+              <img src="Project2.png" alt="Quantitative System Simulations">
+              <div class="project-img-overlay"></div>
+            </a>
+          </div>
+          <div class="project-content-panel">
+            <span class="project-category-badge"><i class="fas fa-microchip"></i> Category 2</span>
+            <h3 class="project-title display-font">Quantitative System Simulations</h3>
+            <p class="project-desc">
+              Design and execution of high-fidelity numerical simulations of physical systems — from LHC collision
+              environments to early-universe cosmological dynamics — enabling precision predictions and discovery-reach
+              forecasts.
+            </p>
+
+            <div>
+              <div class="project-sub-heading">Key Contributions</div>
+              <ul class="project-bullets">
+                <li>Developed and validated theoretical models for new-physics signal processes at the LHC, HL-LHC, and
+                  Forward Physics Facility using FeynRules and MadGraph, covering ALPs, dark photons, leptoquarks, and
+                  sterile neutrinos</li>
+                <li>Implemented numerical solvers for inflationary dynamics (Higgs inflation with four-form couplings)
+                  and computed primordial power spectra, PBH mass functions, and induced gravitational wave backgrounds
+                </li>
+                <li>Conducted large-scale parameter scans across multi-dimensional BSM model spaces using parallelised
+                  Python/Mathematica codes on HPC clusters</li>
+                <li>Simulated and interpreted stochastic gravitational wave backgrounds from PBH formation in connection
+                  with NANOGrav PTA signals</li>
+                <li>Derived discovery prospects and exclusion limits for future experiments (CEPC, Belle II, FASER, FPF)
+                  through end-to-end Monte Carlo simulation chains including detector-level effects</li>
+              </ul>
+            </div>
+
+            <div>
+              <div class="project-sub-heading">Tools &amp; Methods</div>
+              <div class="project-tech-row">
+                <span class="tech-chip">MadGraph</span>
+                <span class="tech-chip">Pythia</span>
+                <span class="tech-chip">FeynRules</span>
+                <span class="tech-chip">FeynCalc</span>
+                <span class="tech-chip">Delphes</span>
+                <span class="tech-chip">HPC / Linux</span>
+                <span class="tech-chip">Mathematica</span>
+                <span class="tech-chip">Parallel Computing</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ACADEMIC VISITS
+  ============================================================ -->
+  <section id="visits" class="bg-cream">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-label"><i class="fas fa-plane"></i>&nbsp; International</span>
+        <h2 class="section-heading">Academic Visits &amp; Internships</h2>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;">
+
+        <div class="visit-card" data-aos="fade-up" data-aos-delay="0">
+          <div class="visit-name">University of Adelaide</div>
+          <div class="visit-meta">Mar 2025 – May 2025 · Host: Prof. Anthony Gordon Williams</div>
+          <div class="visit-place"><i class="fas fa-map-marker-alt"
+              style="color:var(--gold);margin-right:0.4rem;font-size:0.75rem;"></i>Adelaide, Australia</div>
+        </div>
+
+        <div class="visit-card" data-aos="fade-up" data-aos-delay="60">
+          <div class="visit-name">University of Notre Dame</div>
+          <div class="visit-meta">Mar 2024 – Apr 2024 · Host: Prof. Yuhsin Tsai</div>
+          <div class="visit-place"><i class="fas fa-map-marker-alt"
+              style="color:var(--gold);margin-right:0.4rem;font-size:0.75rem;"></i>Notre Dame, Indiana, USA</div>
+        </div>
+
+        <div class="visit-card" data-aos="fade-up" data-aos-delay="120">
+          <div class="visit-name">National Tsing Hua University</div>
+          <div class="visit-meta">Mar 2019 – Jun 2019 · Host: Prof. Tomotsugu Goto</div>
+          <div class="visit-place"><i class="fas fa-map-marker-alt"
+              style="color:var(--gold);margin-right:0.4rem;font-size:0.75rem;"></i>Hsinchu, Taiwan</div>
+        </div>
+
+        <div class="visit-card" data-aos="fade-up" data-aos-delay="180">
+          <div class="visit-name">Indian Institute of Technology Guwahati</div>
+          <div class="visit-meta">Feb 2019 · Host: Prof. Debaprasad Maity</div>
+          <div class="visit-place"><i class="fas fa-map-marker-alt"
+              style="color:var(--gold);margin-right:0.4rem;font-size:0.75rem;"></i>Guwahati, Assam, India</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       COLLABORATIONS
+  ============================================================ -->
+  <section id="collaborations" class="bg-warm">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-label"><i class="fas fa-globe"></i>&nbsp; Global Network</span>
+        <h2 class="section-heading">Research Collaborations</h2>
+      </div>
+
+      <div data-aos="zoom-in" data-aos-delay="80">
+        <div class="collab-map-wrap">
+          <img src="map.png" alt="International Research Collaborations Map">
+        </div>
+      </div>
+
+      <div class="collab-legend" data-aos="fade-up" data-aos-delay="160">
+        <div class="collab-dot"><span class="collab-dot-marker"></span> India</div>
+        <div class="collab-dot"><span class="collab-dot-marker"></span> Taiwan</div>
+        <div class="collab-dot"><span class="collab-dot-marker"></span> Australia</div>
+        <div class="collab-dot"><span class="collab-dot-marker"></span> South Korea</div>
+        <div class="collab-dot"><span class="collab-dot-marker"></span> United States</div>
+        <div class="collab-dot"><span class="collab-dot-marker"></span> Poland</div>
+        <div class="collab-dot"><span class="collab-dot-marker"></span> Japan</div>
+        <div class="collab-dot"><span class="collab-dot-marker"></span> Israel</div>
+        <div class="collab-dot"><span class="collab-dot-marker"></span> China</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       RESEARCH INTERESTS — TAB LAYOUT
+  ============================================================ -->
+  <section id="interests" class="bg-cream">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-label"><i class="fas fa-microscope"></i>&nbsp; Science</span>
+        <h2 class="section-heading">Research Interests</h2>
+      </div>
+
+      <!-- Tab buttons -->
+      <div class="tab-bar" data-aos="fade-up" data-aos-delay="60">
+        <button class="tab-btn active" data-tab="tab-collider">
+          <i class="fas fa-atom"></i> Collider Physics
+        </button>
+        <button class="tab-btn" data-tab="tab-newphysics">
+          <i class="fas fa-magnifying-glass"></i> New Physics
+        </button>
+        <button class="tab-btn" data-tab="tab-inflation">
+          <i class="fas fa-globe"></i> Inflation
+        </button>
+        <button class="tab-btn" data-tab="tab-pbh">
+          <i class="fas fa-circle-dot"></i> Primordial Black Holes
+        </button>
+        <button class="tab-btn" data-tab="tab-gw">
+          <i class="fas fa-wave-square"></i> Gravitational Waves
+        </button>
+      </div>
+
+      <!-- COLLIDER PHYSICS -->
+      <div id="tab-collider" class="tab-panel active" data-aos="fade-up">
+        <div class="research-panel-inner">
+          <div>
+            <div class="icon-row">
+              <i class="fas fa-atom"></i>
+              <h3 class="display-font">Collider Physics</h3>
+            </div>
+            <p class="text-soft" style="line-height:1.85;">Searches for new physics at the LHC, HL-LHC, Belle II, CEPC,
+              and Forward Physics Facility, including axion-like particles (ALPs), dark photons, leptoquarks, and
+              sterile neutrinos.</p>
+            <p style="font-weight:600;margin-top:1.5rem;margin-bottom:0.5rem;font-size:0.9rem;color:var(--navy);">
+              Selected Papers:</p>
+            <ul class="pub-list">
+              <li class="pub-item"><a href="https://arxiv.org/abs/2412.08212" target="_blank">Unveiling the invisible:
+                  ALPs and sterile neutrinos at the LHC and HL-LHC (2024) ↗</a></li>
+              <li class="pub-item"><a href="https://arxiv.org/abs/2404.14833" target="_blank">Exploring interference
+                  effects between two ALP effective operators at the LHC (2024) ↗</a></li>
+            </ul>
+          </div>
+          <a href="collider_physics.png" data-lightbox="research" class="research-img-wrap">
+            <img src="collider_physics.png" alt="Collider Physics">
+          </a>
+        </div>
+      </div>
+
+      <!-- NEW PHYSICS -->
+      <div id="tab-newphysics" class="tab-panel">
+        <div class="research-panel-inner">
+          <div>
+            <div class="icon-row">
+              <i class="fas fa-magnifying-glass"></i>
+              <h3 class="display-font">New Physics Search</h3>
+            </div>
+            <p class="text-soft" style="line-height:1.85;">Beyond-Standard-Model phenomenology focusing on axion-like
+              particles, dark photons, leptoquarks, and sterile neutrinos. We develop effective field theory frameworks
+              and perform detailed collider simulations at the LHC, HL-LHC, Belle II, and future Higgs factories using
+              tools such as MadGraph and Pythia to derive exclusion limits and discovery prospects.</p>
+            <p style="font-weight:600;margin-top:1.5rem;margin-bottom:0.5rem;font-size:0.9rem;color:var(--navy);">
+              Selected Publications:</p>
+            <ul class="pub-list">
+              <li class="pub-item">Cheung et al. (2025) – Unveiling the invisible: ALPs and sterile neutrinos at the LHC
+                and HL-LHC</li>
+              <li class="pub-item">Cheung et al. (2024) – Exploring interference effects between two ALP effective
+                operators at the LHC</li>
+              <li class="pub-item">Cheung et al. (2024) – Probing the gauge-boson couplings of axion-like particle at
+                the LHC and HL-LHC</li>
+              <li class="pub-item">Cheung et al. (2024) – Probing dark photons from a light scalar at Belle II</li>
+              <li class="pub-item">Cheung &amp; Ouseph (2024) – Interpretation of excess in H → Zγ using a light
+                axion-like particle</li>
+              <li class="pub-item">Cheung &amp; Ouseph (2023) – Axion-like particle search at Higgs factories</li>
+              <li class="pub-item">Cheung &amp; Ouseph (2022) – Sensitivities on dark photon from the forward physics
+                experiments</li>
+              <li class="pub-item">Cheung et al. (2023) – Leptoquark search at the Forward Physics Facility</li>
+            </ul>
+          </div>
+          <a href="new_physics.png" data-lightbox="research" class="research-img-wrap">
+            <img src="new_physics.png" alt="New Physics">
+          </a>
+        </div>
+      </div>
+
+      <!-- INFLATION -->
+      <div id="tab-inflation" class="tab-panel">
+        <div class="research-panel-inner">
+          <div>
+            <div class="icon-row">
+              <i class="fas fa-globe"></i>
+              <h3 class="display-font">Inflation</h3>
+            </div>
+            <p class="text-soft" style="line-height:1.85;">Early-universe cosmology with particular emphasis on Higgs
+              inflation models incorporating four-form couplings and their observational consequences. We investigate
+              connections between inflationary dynamics, primordial gravitational waves, and consistency with current
+              and future cosmological datasets including NANOGrav PTA signals.</p>
+            <p style="font-weight:600;margin-top:1.5rem;margin-bottom:0.5rem;font-size:0.9rem;color:var(--navy);">
+              Selected Publications:</p>
+            <ul class="pub-list">
+              <li class="pub-item">Cheung, Ouseph &amp; Tseng (2024) – NANOGrav and other PTA signals and PBH from
+                modified Higgs inflation</li>
+              <li class="pub-item">Ouseph &amp; Cheung (2021) – Higgs Inflation with four-form couplings</li>
+            </ul>
+          </div>
+          <a href="inflation.png" data-lightbox="research" class="research-img-wrap">
+            <img src="inflation.png" alt="Inflation">
+          </a>
+        </div>
+      </div>
+
+      <!-- PBH -->
+      <div id="tab-pbh" class="tab-panel">
+        <div class="research-panel-inner">
+          <div>
+            <div class="icon-row">
+              <i class="fas fa-circle-dot"></i>
+              <h3 class="display-font">Primordial Black Holes</h3>
+            </div>
+            <p class="text-soft" style="line-height:1.85;">Formation mechanisms of primordial black holes (PBHs) from
+              modified Higgs inflation scenarios, their role as dark matter candidates, and multi-messenger signatures
+              including gamma-ray observations and gravitational waves. We study double-peaked gamma-ray spectra and
+              connections to PTA signals.</p>
+            <p style="font-weight:600;margin-top:1.5rem;margin-bottom:0.5rem;font-size:0.9rem;color:var(--navy);">
+              Selected Publications:</p>
+            <ul class="pub-list">
+              <li class="pub-item">Cheung, Ouseph &amp; Tseng (2024) – NANOGrav and other PTA signals and PBH from
+                modified Higgs inflation</li>
+              <li class="pub-item">Cheung et al. (2025) – Searching for Dark Photon Tridents Through PBH Signatures</li>
+              <li class="pub-item">Ouseph et al. (2025) – Double-Peaked Gamma-Ray Spectra from PBHs</li>
+            </ul>
+          </div>
+          <a href="pbh.png" data-lightbox="research" class="research-img-wrap">
+            <img src="pbh.png" alt="Primordial Black Holes">
+          </a>
+        </div>
+      </div>
+
+      <!-- GRAVITATIONAL WAVES -->
+      <div id="tab-gw" class="tab-panel">
+        <div class="research-panel-inner">
+          <div>
+            <div class="icon-row">
+              <i class="fas fa-wave-square"></i>
+              <h3 class="display-font">Gravitational Waves</h3>
+            </div>
+            <p class="text-soft" style="line-height:1.85;">Probing new physics and early-universe phenomena through
+              pulsar timing array (PTA) signals such as NANOGrav, as well as future gravitational wave detectors.
+              Special focus on connections between primordial black holes, modified inflation, and stochastic
+              gravitational wave backgrounds.</p>
+            <p style="font-weight:600;margin-top:1.5rem;margin-bottom:0.5rem;font-size:0.9rem;color:var(--navy);">
+              Selected Publications:</p>
+            <ul class="pub-list">
+              <li class="pub-item">Cheung, Ouseph &amp; Tseng (2024) – NANOGrav and other PTA signals and PBH from
+                modified Higgs inflation</li>
+              <li class="pub-item">Ouseph et al. (2025) – Probing Double-Peaked Gamma-Ray Spectra from Primordial Black
+                Holes</li>
+            </ul>
+          </div>
+          <a href="gw.png" data-lightbox="research" class="research-img-wrap">
+            <img src="gw.png" alt="Gravitational Waves">
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TEACHING
+  ============================================================ -->
+  <section id="teaching" class="bg-warm">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-label"><i class="fas fa-chalkboard-teacher"></i>&nbsp; Pedagogy</span>
+        <h2 class="section-heading">Teaching</h2>
+      </div>
+
+      <div class="teaching-grid">
+        <div class="teaching-img" data-aos="fade-right">
+          <a href="Teach.JPEG" data-lightbox="teaching">
+            <img src="Teach.JPEG" alt="Teaching Experience">
+          </a>
+        </div>
+        <div data-aos="fade-left" data-aos-delay="80">
+          <p style="font-size:1.05rem;color:var(--text-soft);line-height:1.9;">
+            Actively involved in graduate and undergraduate teaching as well as student mentorship during doctoral
+            studies at National Tsing Hua University.
+            Contributed to courses in theoretical physics and provided guidance to master's and exchange students on
+            collider phenomenology and beyond-Standard-Model physics.
+            Mentoring resulted in co-authored publications in high-impact journals including JHEP and Physical Review D.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TALKS
+  ============================================================ -->
+  <section id="talks" class="bg-cream">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-label"><i class="fas fa-microphone"></i>&nbsp; Presentations</span>
+        <h2 class="section-heading">Selected Talks &amp; Presentations</h2>
+      </div>
+
+      <div class="talks-gallery" data-aos="fade-up" data-aos-delay="60">
+        <div class="gallery-item">
+          <a href="talk1.jpg" data-lightbox="talks" data-title="Conference Talk">
+            <img src="talk1.jpg" alt="Talk">
+          </a>
+        </div>
+        <div class="gallery-item">
+          <a href="talk2.JPEG" data-lightbox="talks" data-title="Conference Talk">
+            <img src="talk2.JPEG" alt="Talk">
+          </a>
+        </div>
+        <div class="gallery-item">
+          <a href="NuInt.jpg" data-lightbox="talks" data-title="NuInt Presentation">
+            <img src="NuInt.jpg" alt="Presentation">
+          </a>
+        </div>
+      </div>
+
+      <ul class="talk-items" data-aos="fade-up" data-aos-delay="120">
+        <li class="talk-item">
+          <span class="talk-date">Mar 2025</span>
+          <span class="talk-text">Searching for Dark Photon Tridents Through Primordial Black Hole Signatures —
+            University of Adelaide, Australia</span>
+        </li>
+        <li class="talk-item">
+          <span class="talk-date">Apr 2025</span>
+          <span class="talk-text">Primordial Black Holes as Dark Photon Factories — National Tsing Hua Univers ity,
+            Taiwan</span>
+        </li>
+        <li class="talk-item">
+          <span class="talk-date">Oct 2024</span>
+          <span class="talk-text">New Physics Search at FPF LHC, HL-LHC, and Higgs Factories — KonKuk University, South
+            Korea</span>
+        </li>
+        <li class="talk-item">
+          <span class="talk-date">+ 15 more</span>
+          <span class="talk-text">International seminars and workshops (full list in CV)</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       MENTORSHIP
+  ============================================================ -->
+  <section id="mentorship" class="bg-warm">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-label"><i class="fas fa-user-graduate"></i>&nbsp; Leadership</span>
+        <h2 class="section-heading">Student Mentorship</h2>
+      </div>
+
+      <p style="max-width:620px;color:var(--text-soft);line-height:1.85;margin-bottom:0;" data-aos="fade-up"
+        data-aos-delay="50">
+        Mentored 3 graduate/exchange students at National Tsing Hua University (2021–2024), resulting in co-authored
+        publications in JHEP and Physical Review D.
+      </p>
+
+      <div class="mentorship-cards">
+
+        <div class="mentor-card" data-aos="fade-up" data-aos-delay="60">
+          <i class="fas fa-user-graduate"></i>
+          <p style="font-weight:600;color:var(--navy);margin-bottom:0.4rem;">Mr. Chen Wang &amp; Mr. Wanyon Hsiao</p>
+          <p>Master's students — Gauge-boson couplings of axion-like particles (ALPs)</p>
+        </div>
+
+        <div class="mentor-card" data-aos="fade-up" data-aos-delay="120">
+          <i class="fas fa-user-graduate"></i>
+          <p style="font-weight:600;color:var(--navy);margin-bottom:0.4rem;">Mr. Thong T.Q. Nguyen</p>
+          <p>Exchange student — Leptoquark search at Forward Physics Facility</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TECHNICAL SKILLS  (dark navy background)
+  ============================================================ -->
+  <section id="skills" class="bg-navy">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-label"><i class="fas fa-code"></i>&nbsp; Expertise</span>
+        <h2 class="section-heading" style="color:#fff;">Technical Skills</h2>
+      </div>
+
+      <div class="skills-grid">
+
+        <div class="skill-card" data-aos="fade-up" data-aos-delay="0">
+          <div class="skill-icon"><i class="fab fa-python"></i></div>
+          <div class="skill-title">Programming &amp; Tools</div>
+          <div class="skill-text">Python (advanced: NumPy, SciPy, Pandas, Matplotlib, Seaborn, scikit-learn,
+            TensorFlow), Wolfram Mathematica, LaTeX, SQL, R</div>
+        </div>
+
+        <div class="skill-card" data-aos="fade-up" data-aos-delay="70">
+          <div class="skill-icon"><i class="fas fa-atom"></i></div>
+          <div class="skill-title">Physics &amp; Simulation</div>
+          <div class="skill-text">MadGraph, Pythia, ROOT, Delphes, FeynRules, FeynCalc; High-Performance Computing
+            (Linux, parallel processing)</div>
+        </div>
+
+        <div class="skill-card" data-aos="fade-up" data-aos-delay="140">
+          <div class="skill-icon"><i class="fas fa-chart-line"></i></div>
+          <div class="skill-title">Statistical &amp; Numerical Methods</div>
+          <div class="skill-text">Bayesian inference, Monte Carlo methods, likelihood analysis, differential equations,
+            optimization</div>
+        </div>
+
+        <div class="skill-card" data-aos="fade-up" data-aos-delay="210">
+          <div class="skill-icon"><i class="fas fa-chart-bar"></i></div>
+          <div class="skill-title">Data Visualization &amp; Others</div>
+          <div class="skill-text">Publication-quality plots, large-scale data processing (&gt;10TB), project management
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-name">Dr. Ouseph C.J.</div>
+      <p class="footer-tagline">Adelaide, South Australia · Theoretical Physicist</p>
+      <p class="footer-tagline">Email: ouseph444@gmail.com</p>
+      <p class="footer-tagline">Phone: +61 413 469 729</p>
+
+      <div class="footer-links">
+        <a href="https://inspirehep.net/authors/1842258" target="_blank" class="footer-link">
+          <i class="fas fa-database"></i> INSPIRE-HEP
+        </a>
+        <a href="https://scholar.google.com/citations?user=GgLr0BsAAAAJ" target="_blank" class="footer-link">
+          <i class="fab fa-google"></i> Google Scholar
+        </a>
+        <a href="https://linkedin.com/in/c-j-ouseph-p-hd-3099251a9/" target="_blank" class="footer-link">
+          <i class="fab fa-linkedin"></i> LinkedIn
+        </a>
+        <a href="https://github.com/ouseph444" target="_blank" class="footer-link">
+          <i class="fab fa-github"></i> GitHub
+        </a>
+      </div>
+
+      <p class="footer-copy">© 2026 Dr. Ouseph C.J. · All rights reserved</p>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       SCRIPTS
+  ============================================================ -->
+  <!-- AOS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <!-- Lightbox -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+
+  <script>
+    /* ----------------------------------------------------------
+       AOS INIT
+    ---------------------------------------------------------- */
+    AOS.init({
+      duration: 700,
+      easing: 'ease-out-cubic',
+      once: true,
+      offset: 60,
+    });
+
+    /* ----------------------------------------------------------
+       HERO PARTICLES
+    ---------------------------------------------------------- */
+    (function () {
+      const container = document.getElementById('heroParticles');
+      const count = 55;
+      for (let i = 0; i < count; i++) {
+        const s = document.createElement('span');
+        s.style.left = Math.random() * 100 + '%';
+        s.style.top = Math.random() * 100 + '%';
+        s.style.setProperty('--dur', (2.5 + Math.random() * 4) + 's');
+        s.style.setProperty('--delay', (Math.random() * 5) + 's');
+        s.style.width = (1 + Math.random() * 2.5) + 'px';
+        s.style.height = s.style.width;
+        container.appendChild(s);
+      }
+    })();
+
+    /* ----------------------------------------------------------
+       STICKY NAV SHADOW
+    ---------------------------------------------------------- */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 30);
+    }, { passive: true });
+
+    /* ----------------------------------------------------------
+       MOBILE NAV TOGGLE
+    ---------------------------------------------------------- */
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+      const icon = navToggle.querySelector('i');
+      icon.classList.toggle('fa-bars');
+      icon.classList.toggle('fa-times');
+    });
+
+    /* Close on link click (mobile) */
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        navToggle.querySelector('i').className = 'fas fa-bars';
+      });
+    });
+
+    /* ----------------------------------------------------------
+       ACTIVE NAV HIGHLIGHTING (IntersectionObserver)
+    ---------------------------------------------------------- */
+    const sections = document.querySelectorAll('section[id], header[id]');
+    const navItems = document.querySelectorAll('.nav-links a');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          navItems.forEach(a => {
+            a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+          });
+        }
+      });
+    }, { rootMargin: '-30% 0px -55% 0px' });
+
+    sections.forEach(s => observer.observe(s));
+
+    /* ----------------------------------------------------------
+       RESEARCH TABS
+    ---------------------------------------------------------- */
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.dataset.tab;
+
+        // Update buttons
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // Update panels
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        document.getElementById(target).classList.add('active');
+      });
+    });
+
+    /* ----------------------------------------------------------
+       LIGHTBOX CONFIG
+    ---------------------------------------------------------- */
+    if (typeof lightbox !== 'undefined') {
+      lightbox.option({
+        resizeDuration: 200,
+        wrapAround: true,
+        disableScrolling: true,
+        fitImagesInViewport: true,
+      });
+    }
+  </script>
+
+  <!-- ============================================================
+       ENHANCEMENT SCRIPTS
+  ============================================================ -->
+  <script>
+    /* ── Wait for DOM ─────────────────────────────────────────── */
+    document.addEventListener('DOMContentLoaded', () => {
+
+      /* ── 1. Scroll Progress Bar ─────────────────────────────── */
+      const progressBar = document.getElementById('scroll-progress');
+      window.addEventListener('scroll', () => {
+        const scrolled = window.scrollY;
+        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+        progressBar.style.width = (scrolled / maxScroll * 100) + '%';
+      }, { passive: true });
+
+      /* ── 2. Nav Hide/Reveal on Scroll Direction ─────────────── */
+      let lastY = 0;
+      window.addEventListener('scroll', () => {
+        const y = window.scrollY;
+        if (y > 120 && y > lastY) {
+          navbar.classList.add('nav-hidden');
+        } else {
+          navbar.classList.remove('nav-hidden');
+        }
+        lastY = y;
+      }, { passive: true });
+
+      /* ── 3. Parallax Hero Background ───────────────────────── */
+      const heroBg = document.querySelector('.hero-bg');
+      if (heroBg) {
+        window.addEventListener('scroll', () => {
+          if (window.scrollY < window.innerHeight * 1.2) {
+            heroBg.style.transform = `translateY(${window.scrollY * 0.32}px)`;
+          }
+        }, { passive: true });
+      }
+
+      /* ── 4. Animated Section Dividers ──────────────────────── */
+      document.querySelectorAll('section').forEach((sec, i) => {
+        if (i === 0) return;
+        const div = document.createElement('div');
+        div.className = 'section-divider';
+        sec.parentNode.insertBefore(div, sec);
+      });
+      const dividerObs = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in-view'); });
+      }, { threshold: 0.5 });
+      document.querySelectorAll('.section-divider').forEach(d => dividerObs.observe(d));
+
+      /* ── 5. Section heading underline reveal ────────────────── */
+      const headingObs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) e.target.classList.add('heading-revealed');
+        });
+      }, { threshold: 0.4 });
+      document.querySelectorAll('.section-header').forEach(h => headingObs.observe(h));
+
+      /* ── 6. Reveal Left / Right / Up Animations ─────────────── */
+      // Alternate odd/even sections slide from left/right
+      const contentSections = document.querySelectorAll('section');
+      contentSections.forEach((sec, i) => {
+        const inner = sec.querySelector('.container > :not(.section-header)');
+        if (!inner) return;
+        inner.classList.add(i % 2 === 0 ? 'reveal-left' : 'reveal-right');
+      });
+      const revealObs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('revealed');
+            revealObs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.reveal-left, .reveal-right, .reveal-up').forEach(el => revealObs.observe(el));
+
+      /* ── 7. Staggered list/card animations ──────────────────── */
+      const staggerObs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          const parent = entry.target;
+          const children = parent.querySelectorAll(
+            '.pub-item, .talk-item, .visit-card, .mentor-card, .skill-card'
+          );
+          children.forEach((child, i) => {
+            setTimeout(() => child.classList.add('stagger-revealed'), i * 90);
+          });
+          staggerObs.unobserve(parent);
+        });
+      }, { threshold: 0.1 });
+      // Observe containers that hold staggerable children
+      document.querySelectorAll(
+        '.pub-list, .talk-items, .mentorship-cards, .skills-grid'
+      ).forEach(el => staggerObs.observe(el));
+      // Visit cards container
+      const visitGrid = document.querySelector('#visits .container > div:not(.section-header)');
+      if (visitGrid) staggerObs.observe(visitGrid);
+
+      /* ── 8. 3-D Card Tilt ───────────────────────────────────── */
+      document.querySelectorAll('.edu-card, .mentor-card, .project-card').forEach(card => {
+        card.classList.add('tilt-card');
+        card.addEventListener('mousemove', e => {
+          const r = card.getBoundingClientRect();
+          const x = ((e.clientX - r.left) / r.width - 0.5) * 10;
+          const y = ((e.clientY - r.top) / r.height - 0.5) * -10;
+          card.style.transform = `perspective(800px) rotateY(${x}deg) rotateX(${y}deg) translateY(-4px)`;
+        });
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = '';
+        });
+      });
+
+      /* ── 9. Ripple Effect on Buttons ────────────────────────── */
+      document.querySelectorAll('.btn-primary, .btn-outline').forEach(btn => {
+        btn.addEventListener('click', e => {
+          const ripple = document.createElement('span');
+          ripple.className = 'ripple';
+          const rect = btn.getBoundingClientRect();
+          ripple.style.left = (e.clientX - rect.left - 5) + 'px';
+          ripple.style.top = (e.clientY - rect.top - 5) + 'px';
+          btn.appendChild(ripple);
+          ripple.addEventListener('animationend', () => ripple.remove());
+        });
+      });
+
+      /* ── 10. Floating Decorative Orbs (hero) ────────────────── */
+      const hero = document.getElementById('hero');
+      if (hero) {
+        const orbData = [
+          { size: 320, top: '10%', left: '5%', dur: '9s' },
+          { size: 200, top: '60%', left: '80%', dur: '11s' },
+          { size: 150, top: '80%', left: '20%', dur: '7s' },
+        ];
+        orbData.forEach(o => {
+          const orb = document.createElement('div');
+          orb.className = 'float-orb';
+          orb.style.cssText = `
+          width:${o.size}px; height:${o.size}px;
+          top:${o.top}; left:${o.left};
+          background: radial-gradient(circle, var(--gold-light), transparent);
+          --orb-dur: ${o.dur};
+        `;
+          hero.appendChild(orb);
+        });
+      }
+
+      /* ── 11. GSAP Scroll-triggered gradient shift on hero ───── */
+      if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+        // Subtle brightness/contrast intensification on project cards
+        gsap.utils.toArray('.project-card').forEach((card, i) => {
+          gsap.fromTo(card,
+            { y: 50, opacity: 0 },
+            {
+              y: 0, opacity: 1, duration: 0.9,
+              ease: 'power3.out',
+              delay: i * 0.15,
+              scrollTrigger: { trigger: card, start: 'top 85%', once: true }
+            }
+          );
+        });
+        // Timeline items entry
+        gsap.utils.toArray('.timeline-item').forEach((item, i) => {
+          gsap.fromTo(item,
+            { x: -40, opacity: 0 },
+            {
+              x: 0, opacity: 1, duration: 0.7,
+              ease: 'power2.out',
+              delay: i * 0.12,
+              scrollTrigger: { trigger: item, start: 'top 88%', once: true }
+            }
+          );
+        });
+        // Gallery images zoom in
+        gsap.utils.toArray('.gallery-item').forEach((item, i) => {
+          gsap.fromTo(item,
+            { scale: 0.88, opacity: 0 },
+            {
+              scale: 1, opacity: 1, duration: 0.7,
+              ease: 'back.out(1.4)',
+              delay: i * 0.1,
+              scrollTrigger: { trigger: item, start: 'top 90%', once: true }
+            }
+          );
+        });
+      }
+
+      /* ── 12. Scroll-intensified card shadows ────────────────── */
+      const cardObs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) e.target.classList.add('in-shadow');
+          else e.target.classList.remove('in-shadow');
+        });
+      }, { threshold: 0.3 });
+      document.querySelectorAll('.edu-card').forEach(c => cardObs.observe(c));
+
+      /* ── 13. Smooth anchor scrolling ───────────────────────── */
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            e.preventDefault();
+            const top = target.getBoundingClientRect().top + window.scrollY - 70;
+            window.scrollTo({ top, behavior: 'smooth' });
+          }
+        });
+      });
+
+      /* ── 14. Footer link glow on hover ─────────────────────── */
+      document.querySelectorAll('.footer-link').forEach(link => {
+        link.addEventListener('mouseenter', () => {
+          link.style.boxShadow = '0 0 14px rgba(200,150,60,0.25)';
+        });
+        link.addEventListener('mouseleave', () => {
+          link.style.boxShadow = '';
+        });
+      });
+
+    }); // end DOMContentLoaded
+  </script>
+
+</body>
+
+</html>
