@@ -1214,7 +1214,7 @@ function autoSeason() {
     const im = new Image();
     im.onload = () => res({ ...it, img: im });
     im.onerror = () => res(null);
-    im.src = 'gallery/' + it.file;
+    im.src = it.file;
   }))).then(list => { items = list.filter(Boolean); setSeason('auto'); });
 
   /* ── one long clothesline that slides sideways ── */
